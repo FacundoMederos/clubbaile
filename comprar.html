@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprar Entradas</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <style></style>
+  <body>
+    <header>
+      <nav class="navegacion">
+        <div id="nav-mobile-wrapper">
+          <button id="toggle-menu">☰</button>
+          <div id="nav-links">
+            <a href="comprar.html">Comprar</a>
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <h1>Próximos Shows</h1>
+
+    <div class="show">
+      <h2>Show 1</h2>
+      <p>Fecha: 25 de agosto, 2024</p>
+      <p>Descripción: Un espectáculo lleno de música y energía.</p>
+      <!-- Botón de pago generado -->
+      <script data-reference-id="ebf5e04e-8b89-4636-854d-753b021e0d62">
+        (function () {
+          const z = !!window.DlocalGo,
+            s = z
+              ? document.querySelector(
+                  'script[src="https://static.dlocalgo.com/dlocalgo.min.js"]'
+                )
+              : document.createElement("script");
+          z ||
+            ((s.src = "https://static.dlocalgo.com/dlocalgo.min.js"),
+            (s.async = !0),
+            document.body.appendChild(s));
+          s.addEventListener("load", () => {
+            const e = document.querySelector(
+                'script[data-reference-id="ebf5e04e-8b89-4636-854d-753b021e0d62"]'
+              ),
+              t = e.parentNode,
+              n = "dp-btn-ebf5e04e-8b89-4636-854d-753b021e0d62",
+              c = document.createElement("div");
+            (c.id = n), t.insertBefore(c, e);
+            new DlocalGo("SMPZjnoDLMupUkwiMKRhydCyxqNdGfwZ").createCheckout(n, {
+              subType: "BUTTON",
+              country: "UY",
+              currency: "UYU",
+              amount: "400",
+              lang: "",
+              text: "Comprar",
+            });
+          });
+        })();
+      </script>
+    </div>
+
+    <!-- Puedes repetir el script para otros shows o crear más botones -->
+    <script type="module" src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,542 @@
+/* Variables CSS */
+:root {
+  --color-fondo: #000;
+  --color-texto: #fff;
+  --color-neon-verde: #00ffab;
+  --color-neon-rosa: #ff007f;
+  --color-neon-azul: #007bff;
+  --color-neon-naranja: #ff6700;
+  --color-fondo-transparente: rgba(255, 255, 255, 0.1);
+  --sombra-neon-rosa: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
+}
+
+/* Estilos Generales */
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Encabezados */
+h1,
+h2 {
+  color: var(--color-neon-verde);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  animation: flicker 1.5s infinite alternate;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+/* Animación de Parpadeo */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Navegación */
+/* Navegación */
+.navegacion {
+  background-color: #111;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+#nav-links {
+  display: flex;
+  gap: 2rem; /* Más espaciado entre los enlaces */
+  align-items: center;
+  justify-content: center; /* Centrar los elementos del menú */
+  width: 100%;
+}
+
+#nav-links a,
+#play-button {
+  color: var(--color-texto);
+  text-decoration: none;
+  padding: 0.5rem 1.5rem; /* Aumentar un poco el padding para mejor visualización */
+  border: 2px solid var(--color-texto);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#nav-links a::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(
+    45deg,
+    var(--color-neon-rosa),
+    var(--color-neon-naranja),
+    var(--color-neon-verde),
+    var(--color-neon-azul)
+  );
+  z-index: -1;
+  transition: all 0.3s ease;
+  filter: blur(5px);
+  opacity: 0;
+  border-radius: 5px;
+}
+
+#nav-links a:hover {
+  color: var(--color-neon-verde);
+  border-color: var(--color-neon-verde);
+  text-shadow: 0 0 10px var(--color-neon-verde),
+    0 0 20px var(--color-neon-verde);
+}
+
+#nav-links a:hover::before {
+  opacity: 1;
+  animation: disco 1s infinite linear;
+}
+
+@keyframes disco {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Botón de "Play" */
+#play-button {
+  background-color: var(--color-neon-verde);
+  color: var(--color-texto);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+#play-button:hover {
+  background-color: var(--color-neon-rosa);
+}
+
+/* Juego de la Viborita */
+#snake-game {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border: 2px solid var(--color-neon-verde);
+  box-shadow: 0 0 10px var(--color-neon-verde);
+}
+
+/* Estilo de las secciones del show */
+.show {
+  background: var(--color-fondo-transparente);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  width: 80%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.show:hover {
+  transform: scale(1.05);
+}
+
+p {
+  font-size: 1.2rem;
+  color: var(--color-texto);
+  margin-bottom: 1rem;
+}
+
+/* Botón de compra */
+.btn-comprar {
+  background-color: var(--color-neon-rosa);
+  color: var(--color-texto);
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--sombra-neon-rosa);
+}
+
+.btn-comprar:hover {
+  background-color: #ff4da6;
+  box-shadow: 0 0 20px #ff007f, 0 0 30px #ff007f, 0 0 40px #ff007f;
+}
+
+/* Añadir efectos de luz al fondo */
+body:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-radial-gradient(
+    circle,
+    #ff00cc,
+    #333399 10%,
+    #ff00cc 20%
+  );
+  animation: rotateBackground 20s infinite linear;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@keyframes rotateBackground {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilo para los rastros neón */
+.trail {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4);
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Carrusel 3D */
+.carousel-container {
+  perspective: 1000px;
+  overflow: hidden;
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.carousel {
+  display: flex;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 1s;
+}
+
+.carousel img {
+  width: 200px;
+  height: 300px;
+  margin: 0 1rem;
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+
+/* Galería de Fotos */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Tarjetas de Promociones de Bebidas */
+.promo-cards {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.card {
+  background: var(--color-fondo-transparente);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: var(--color-neon-rosa);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+/* Sección de Reseñas */
+.resenas {
+  background-color: #111;
+  color: var(--color-texto);
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.reviews blockquote {
+  font-style: italic;
+  border-left: 5px solid var(--color-neon-rosa);
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+
+.reviews cite {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--color-neon-verde);
+}
+
+/* Adaptaciones para Móviles */
+@media (max-width: 768px) {
+  .navegacion {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #toggle-menu {
+    display: block; /* Mostrar el botón en móviles */
+  }
+
+  #nav-links {
+    display: none; /* Ocultar por defecto */
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #nav-links.active {
+    display: flex; /* Mostrar cuando activo */
+  }
+
+  #play-button {
+    margin-top: 1rem;
+    width: 80%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .show,
+  .promo-cards .card {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .carousel-container {
+    width: 90%;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding: 0 1rem;
+  }
+}
+
+/* Menú móvil */
+#nav-mobile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#toggle-menu {
+  background: none;
+  border: none;
+  color: var(--color-neon-verde);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none; /* Oculto por defecto en escritorio */
+}
+
+#nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+#nav-links a,
+#play-button {
+  color: var(--color-texto);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-texto);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#nav-links a::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(
+    45deg,
+    var(--color-neon-rosa),
+    var(--color-neon-naranja),
+    var(--color-neon-verde),
+    var(--color-neon-azul)
+  );
+  z-index: -1;
+  transition: all 0.3s ease;
+  filter: blur(5px);
+  opacity: 0;
+  border-radius: 5px;
+}
+
+#nav-links a:hover {
+  color: var(--color-neon-verde);
+  border-color: var(--color-neon-verde);
+  text-shadow: 0 0 10px var(--color-neon-verde),
+    0 0 20px var(--color-neon-verde);
+}
+
+#nav-links a:hover::before {
+  opacity: 1;
+  animation: disco 1s infinite linear;
+}
+
+/* Adaptaciones para Móviles */
+@media (max-width: 768px) {
+  .navegacion {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #toggle-menu {
+    display: block; /* Mostrar el botón en móviles */
+  }
+
+  #nav-links {
+    display: none; /* Ocultar por defecto */
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #nav-links.active {
+    display: flex; /* Mostrar cuando activo */
+  }
+}
+
+/* Ajustes para el juego de la viborita */
+.juego-viborita {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+#snake-game-container {
+  display: inline-block;
+  width: 300px; /* Ajusta el tamaño para que sea como una tarjeta */
+  height: 300px;
+  background-color: #000;
+  position: relative;
+  border: 2px solid var(--color-neon-verde);
+  box-shadow: 0 0 10px var(--color-neon-verde);
+}
+
+#snake-game {
+  width: 100%;
+  height: 100%;
+}
+
+#play-button {
+  background-color: var(--color-neon-verde);
+  color: var(--color-texto);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+#play-button:hover {
+  background-color: var(--color-neon-rosa);
+}
+
+#score {
+  font-size: 1.2rem;
+  color: var(--color-texto);
+  margin-top: 0.5rem;
+  display: block;
+}
